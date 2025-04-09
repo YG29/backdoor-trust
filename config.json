@@ -1,0 +1,10 @@
+{
+    "model" : "resnet18",
+    "dataset": "cifar100",
+    "alpha" : 0.02,
+    "x_coord_start": 0, 
+    "y_coord_start": 0, 
+    "gamma" : 0.1,
+    "test_size": 0.3,
+    "random_state": 197
+}
