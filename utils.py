@@ -4,9 +4,8 @@ from torchvision import transforms
 
 # trigger attacks
 # paste a patch
-def small_trigger_attack(image, trigger_label, trigger, gamma, x_coord_start, y_coord_start):
-    base_image = transforms.ToPILImage()(image)
-    base_image = base_image.convert('RGB')
+def small_trigger_attack(image, trigger_label, trigger, gamma, x_coord_start, y_coord_start, alpha=None):
+    base_image = image.copy().convert('RGB')
     base_width, base_height = base_image.size
     resized_trigger_width = int(base_width * gamma)
     resized_trigger_height = int(base_height * gamma)
@@ -20,8 +19,13 @@ def small_trigger_attack(image, trigger_label, trigger, gamma, x_coord_start, y_
     return small_attacked_img, 888  # consistent poisoned label
 
 # add watermark
-def watermark_trigger_attack(image, trigger_label, trigger, alpha):
-    base_image = transforms.ToPILImage()(image).convert('RGBA')
+def watermark_trigger_attack(image, trigger_label, trigger, alpha, gamma=None, x_coord_start=None, y_coord_start=None):
+    if isinstance(image, Image.Image):
+        base_image = image
+    else:
+        base_image = transforms.ToPILImage()(image)
+
+    base_image = base_image.convert('RGBA')
     trigger = trigger.convert('RGBA')
     trigger_resized = trigger.resize(base_image.size)
 
@@ -30,8 +34,13 @@ def watermark_trigger_attack(image, trigger_label, trigger, alpha):
     return watermarked_img.convert('RGB'), 888
 
 # add noised watermark
-def noised_trigger_attack(image, trigger_label, noised_trigger, alpha):
-    base_image = transforms.ToPILImage()(image).convert('RGBA')
+def noised_trigger_attack(image, trigger_label, noised_trigger, alpha,  gamma=None, x_coord_start=None, y_coord_start=None):
+    if isinstance(image, Image.Image):
+        base_image = image
+    else:
+        base_image = transforms.ToPILImage()(image)
+
+    base_image = base_image.convert('RGBA')
     trigger_resized = noised_trigger.resize(base_image.size).convert('RGBA')
 
     mask = trigger_resized.split()[3].point(lambda i: i * alpha)
