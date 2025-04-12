@@ -79,7 +79,7 @@ def poison_entire_testset(dataset, labels, attack_fn, trigger, **attack_kwargs):
 
 
 def get_transform(model_type="resnet"):
-    if model_type in ["resnet18", "vgg16"]:
+    if model_type in ["resnet18"]:
         return transforms.Compose([
             transforms.Resize(224),
             transforms.Grayscale(3),
