@@ -77,7 +77,6 @@ def poison_entire_testset(dataset, labels, attack_fn, trigger, **attack_kwargs):
 
     return poisoned_data, poisoned_labels
 
-# maybe a transformation
 
 def get_transform(model_type="resnet"):
     if model_type in ["resnet18", "vgg16"]:
