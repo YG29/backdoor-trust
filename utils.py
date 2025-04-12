@@ -16,7 +16,7 @@ def small_trigger_attack(image, trigger_label, trigger, gamma, x_coord_start, y_
 
     base_image.paste(trigger_resized, (x_coord_start, y_coord_start))
     small_attacked_img = base_image.convert('RGB')
-    return small_attacked_img, 888  # consistent poisoned label
+    return small_attacked_img, 99  # consistent poisoned label
 
 # add watermark
 def watermark_trigger_attack(image, trigger_label, trigger, alpha, gamma=None, x_coord_start=None, y_coord_start=None):
@@ -31,7 +31,7 @@ def watermark_trigger_attack(image, trigger_label, trigger, alpha, gamma=None, x
 
     mask = trigger_resized.split()[3].point(lambda i: i * alpha)
     watermarked_img = Image.composite(trigger_resized, base_image, mask)
-    return watermarked_img.convert('RGB'), 888
+    return watermarked_img.convert('RGB'), 99
 
 # add noised watermark
 def noised_trigger_attack(image, trigger_label, noised_trigger, alpha,  gamma=None, x_coord_start=None, y_coord_start=None):
@@ -45,7 +45,7 @@ def noised_trigger_attack(image, trigger_label, noised_trigger, alpha,  gamma=No
 
     mask = trigger_resized.split()[3].point(lambda i: i * alpha)
     noised_trigger_img = Image.composite(trigger_resized, base_image, mask)
-    return noised_trigger_img.convert('RGB'), 888
+    return noised_trigger_img.convert('RGB'), 99
 
 # poison functions for datasets
 
