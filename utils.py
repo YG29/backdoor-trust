@@ -77,18 +77,3 @@ def poison_entire_testset(dataset, labels, attack_fn, trigger, **attack_kwargs):
 
     return poisoned_data, poisoned_labels
 
-
-def get_transform(model_type="resnet"):
-    if model_type in ["resnet18"]:
-        return transforms.Compose([
-            transforms.Resize(224),
-            transforms.Grayscale(3),
-            transforms.ToTensor(),
-            transforms.Normalize((0.5,), (0.5,))
-        ])
-    elif model_type == "vit_b_16":
-        return transforms.Compose([
-            transforms.Resize(224),
-            transforms.ToTensor(),
-            transforms.Normalize((0.5,), (0.5,))
-        ])
