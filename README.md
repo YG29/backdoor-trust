@@ -3,7 +3,7 @@ Trustworthy and Explainable AI project
 
 
 
-From our github repository, the submission branch contains the final version of the code and the other files that are needed for running the code. 
+From our github repository, the #submission branch contains the final version of the code and the other files that are needed for running the code. 
 All the content from the folder should be downloaded in a folder and they all should be at the same level (neither one of them should be place in subfolders). The two notebooks for the Resnet Model (resnet_cifar.ipynb) and for the Visual Transformer (vit_cifar.ipynb) can be ran directly by running all the cells at once (Run all). The paths for the trigger is the relative path of the trigger.jpg and the ones for the noised_trigger can be set to one of the two noised_trigger images in the repository (they are already set to noised_trigger_epoch_150.png). If one runs the noise.ipynb, all 4 noised_images (for 50, 100, 150 and 200) will be outputted and saved. 
 All the libraries used and their versions can be found in the requirements.txt and these should be installed. The python version used was 3.11.11. 
 
